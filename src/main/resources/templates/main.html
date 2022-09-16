@@ -4,7 +4,34 @@
     <title>리눅스로 빌드 테스트</title>
 </head>
 <h1>hello sbb</h1>
+<h1>리눅스에서 jar로 빌드하기</h1>
 <p>git pull origin master</p>
 <p>./gradlew bootJar</p>
 <p>java -jar -Dspring.profiles.active=prod app.jar</p>
+
+<h2>도커에 jar 이미지화 하여 올리기</h2>
+<p>Dockerfile 만들기</p>
+<p>
+    FROM openjdk:17 </br>
+    ADD app.jar app.jar </br>
+    ENTRYPOINT ["java","-jar","-Dspring.profiles.active=prod","/app.jar"] </br>
+</p>
+<p>docker build --tag sbb:1.1 .</p>
+<p>docker run --name app_1 -p 8080:8080 sbb:1.1</p>
+<img src="https://i.imgur.com/IBJLlEn.png">
+<p>컨테이너 확인 docker ps </p>
+<img src="https://i.imgur.com/C9qnlwJ.png">
+
+<h2>nginx 프록시 설정하기</h2>
+<p>클라이언트 8081 -> 톰캣 8080 으로 연동</p>
+<p>vhost.conf 설정</p>
+<p>
+    location / { </br>
+    proxy_pass http://192.168.0.20:8080; </br>
+    proxy_set_header X-Real-IP $remote_addr; </br>
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; </br>
+    proxy_set_header Host $http_host; </br>
+    } </br>
+</p>
+<img src="https://i.imgur.com/tIVMpAf.png">
 </html>
