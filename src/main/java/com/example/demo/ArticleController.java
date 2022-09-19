@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -13,10 +14,12 @@ public class ArticleController {
     private final ArticleRespository articleRespository;
 
     @RequestMapping("/list")
-    public String list(Model model){
-        List<Article> articles = articleRespository.findAll();
-        model.addAttribute("articles",articles);
-        return "list";
+    @ResponseBody
+    public List<Article> list(Model model){
+        //List<Article> articles = articleRespository.findAll();
+        //model.addAttribute("articles",articles);
+        //return "list";
+        return articleRespository.findAll();
     }
 
 }
