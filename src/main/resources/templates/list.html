@@ -1,0 +1,16 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>docker MYSQL 연동 테스트</title>
+</head>
+<h1>Article</h1>
+
+<div th:each="article : ${articles}">
+    <div>
+        <h5 th:text="${article.id}"></h5>
+        <h3 th:text="${article.title}"></h3>
+        <h4 th:text="${article.content}"></h4>
+    </div>
+</div>
+
+</html>
