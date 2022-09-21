@@ -13,6 +13,7 @@ public class DevInitData {
         return args -> {
             articleService.write("제목1","내용1");
             articleService.write("제목2","내용2");
+            articleService.write("제목3","내용3");
 
         };
     }
