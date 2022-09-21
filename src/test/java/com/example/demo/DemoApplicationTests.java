@@ -12,4 +12,9 @@ class DemoApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void test_01(){
+		System.out.println("test");
+	}
+
 }
