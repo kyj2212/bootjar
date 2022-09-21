@@ -15,6 +15,7 @@ class DemoApplicationTests {
 	@Test
 	void test_01(){
 		System.out.println("test");
+		System.out.println("test");
 	}
 
 }
